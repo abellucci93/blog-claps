@@ -19,7 +19,7 @@ ENV PYTHONDONTWRITEBYTECODE=1
 ENV PYTHONUNBUFFERED=1
 ENV PYTHONPATH=/app
 
-RUN addgroup -S app && adduser -S app -G app
+RUN addgroup -S -g 1001 app && adduser -S -u 1001 -G app app
 WORKDIR /app
 
 COPY --from=builder /install/deps /usr/local
