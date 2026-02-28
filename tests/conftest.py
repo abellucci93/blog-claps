@@ -1,5 +1,5 @@
 from typing import Generator
-from fastapi import FastAPI, status
+from fastapi import FastAPI
 from fastapi.testclient import TestClient
 import pytest
 from testcontainers.redis import RedisContainer
@@ -8,6 +8,7 @@ from src.settings import settings
 from src.bootstrap import bootstrap
 
 redis = RedisContainer(image="redis:7", port=6379)
+
 
 @pytest.fixture(scope="session", autouse=True)
 def setup(request):
@@ -33,4 +34,3 @@ def app() -> Generator[FastAPI]:
 def client(app: FastAPI) -> Generator[TestClient]:
     test_client = TestClient(app)
     yield test_client
-
