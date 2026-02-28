@@ -1,6 +1,6 @@
-# Blog Clap
+# Blog Claps
 
-**Blog Clap** is a lightweight microservice that enables users to "clap" for blog posts - similar to reactions on modern publishing platforms. It is built with **Python 3.14**, powered by **FastAPI**, and uses **Redis** as its primary data store.
+**Blog Claps** is a lightweight microservice that enables users to "clap" for blog posts - similar to reactions on modern publishing platforms. It is built with **Python 3.14**, powered by **FastAPI**, and uses **Redis** as its primary data store.
 
 ## Table of contents
 
