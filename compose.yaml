@@ -1,0 +1,19 @@
+services:
+  app:
+    build:
+      dockerfile: Dockerfile
+      target: development
+    ports:
+      - "${APP_HTTP_PORT:-8000}:8000"
+    volumes:
+      - ".:/app"
+    depends_on:
+      - redis
+    environment:
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+
+  redis:
+    image: redis:7
+    ports:
+      - "${REDIS_PORT:-6379}:6379"
