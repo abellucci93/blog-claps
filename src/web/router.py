@@ -15,7 +15,7 @@ def root():
 
 
 @router.get("/healthz", status_code=status.HTTP_204_NO_CONTENT)
-def healthy() -> Response:
+def healthz() -> Response:
     return Response(status_code=status.HTTP_204_NO_CONTENT)
 
 
