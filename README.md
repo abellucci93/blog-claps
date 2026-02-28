@@ -60,7 +60,7 @@ pip install -r requirements.txt
 4. Run the application
 
 ```sh
-uvicorn app.main:app --reload
+uvicorn src.main:app --reload
 ```
 
 The service will be available at: `http://localhost:8000`
