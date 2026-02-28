@@ -14,5 +14,9 @@ class ClapsCreateResponse(BaseModel):
     clap: Clap
 
 
-class ClapsGetResponse(BaseModel):
+class ClapsGetCountRequest(BaseModel):
+    identifier: str
+
+
+class ClapsGetCountResponse(BaseModel):
     clap: Clap

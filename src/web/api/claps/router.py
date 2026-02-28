@@ -3,7 +3,12 @@ from redis.asyncio import Redis
 
 from src.services.redis import get_redis
 
-from .schemas import Clap, ClapsCreateRequest, ClapsCreateResponse, ClapsGetResponse
+from .schemas import (
+    Clap,
+    ClapsCreateRequest,
+    ClapsCreateResponse,
+    ClapsGetCountResponse,
+)
 
 
 router = APIRouter(
@@ -23,13 +28,13 @@ async def claps_create(
     return ClapsCreateResponse(clap=Clap(identifier=request.identifier, count=count))
 
 
-@router.get("/count", response_model=ClapsGetResponse)
+@router.get("/count", response_model=ClapsGetCountResponse)
 async def claps_get_count(
     identifier: str, redis: Redis = Depends(get_redis)
-) -> ClapsGetResponse:
+) -> ClapsGetCountResponse:
     count = await redis.get(identifier)
 
     if count is None:
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND)
 
-    return ClapsGetResponse(clap=Clap(identifier=identifier, count=count))
+    return ClapsGetCountResponse(clap=Clap(identifier=identifier, count=count))
